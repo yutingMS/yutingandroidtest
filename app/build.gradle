@@ -43,16 +43,29 @@ android {
             versionName "Developer 1"
         }
     }
-    buildTypes {
-        debug {
-            resValue "string", "api_key", "AIzaSyCmYfbpWw625ct3R7zTYu0jhkdyuYWYFS4"
-        }
+ buildTypes {
         release {
-            resValue "string", "api_key", "AIzaSyD2or9u2olyov0YNTRIdcEzDk3ciPspJd0"
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
+        debug {
+            applicationIdSuffix ".debug"
+            debuggable true
+        }
+
+        /**
+         * The `initWith` property allows you to copy configurations from other build types,
+         * then configure just the settings you want to change. This one copies the debug build
+         * type, and then changes the manifest placeholder and application ID.
+         */
+        staging {
+            initWith debug
+            manifestPlaceholders = [hostName:"internal.example.com"]
+            applicationIdSuffix ".debugStaging"
+        }
     }
+}
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
