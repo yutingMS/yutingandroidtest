@@ -3,5 +3,4 @@
 if [ ! -n "$APP_CENTER_KEY" ]
 then
     echo "You need define the $APP_CENTER_KEY variable in App Center"
-    exit
 fi
