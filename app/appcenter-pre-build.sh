@@ -8,11 +8,11 @@ fi
 
 #APP_CONSTANT_FILE=$APPCENTER_SOURCE_DIRECTORY/RPS/Constants/AppConstant.cs
 
-if [ -e "$APP_CONSTANT_FILE" ]
-then
-    echo "Updating ApiUrl to $APP_CENTER_KEY in AppConstant.cs"
-    sed -i '' 's#AppCenterKey = "[a-z:./]*"#AppCenterKey = "'$APP_CENTER_KEY'"#' $APP_CONSTANT_FILE
-
-    echo "File content:"
-    cat $APP_CONSTANT_FILE
-fi
+#if [ -e "$APP_CONSTANT_FILE" ]
+#then
+#    echo "Updating ApiUrl to $APP_CENTER_KEY in AppConstant.cs"
+#    sed -i '' 's#AppCenterKey = "[a-z:./]*"#AppCenterKey = "'$APP_CENTER_KEY'"#' $APP_CONSTANT_FILE
+#
+#    echo "File content:"
+#    cat $APP_CONSTANT_FILE
+#fi
