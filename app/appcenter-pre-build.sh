@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-if [ ! -n "$APP_CENTER_KEY" ]
+# Example: Change bundle name of an iOS app for non-production
+if [ "$APPCENTER_BRANCH" != "master" ];
 then
-    echo "You need define the $APP_CENTER_KEY variable in App Center"
+    plutil -replace CFBundleName -string "\$(PRODUCT_NAME) Beta" $APPCENTER_SOURCE_DIRECTORY/MyApp/Info.plist
 fi
