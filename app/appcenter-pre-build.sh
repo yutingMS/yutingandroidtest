@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+#!/usr/bin/env bash
 
 if [ ! -n "$APP_CENTER_KEY" ]
 then
