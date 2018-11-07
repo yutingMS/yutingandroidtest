@@ -1,0 +1,49 @@
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.app.myapp"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [GOOGLE_MAP_API_KEY  :   GOOGLE_MAP_API_KEY]
+    }
+    buildTypes {
+        internal {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        applicationVariants.all { variant ->
+            variant.outputs.all {
+                def relativeRootDir = packageApplication.outputDirectory.toPath().relativize(rootDir.toPath()).toFile()
+                outputFileName = new File("$relativeRootDir/build/outputs/apk/", "MyApp.apk")
+            }
+        }
+    }
+    kapt {
+        generateStubs = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "de.hdodenhof:circleimageview:$circleimageview_version"
+    implementation "com.google.android.material:material:$androidx_appcompat_version"
+    implementation "com.romandanylyk:pageindicatorview:$page_indicator_view_version"
+    implementation "com.squareup.picasso:picasso:$picasso_version"
+    implementation project(':base')
+    implementation project(':feature:intro')
+    implementation project(':feature:auth')
+    implementation project(':feature:home')
+    implementation project(':feature:profile')
+    implementation project(':feature:attendance')
+}
+
+repositories {
+    mavenCentral()
+}
